@@ -14,4 +14,7 @@ pip install pyhan
 ## example
 
 ```
+from pyhan import han
+if __name__ == '__main__':
+    han.Han().to_traditional('萝卜去哪了，可以在茶几卜上几卦')
 ```
