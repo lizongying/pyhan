@@ -13,8 +13,8 @@ class Han:
         return cls._instance
 
     def __init__(self):
-        if not hasattr(self, 'initialized'):
-            self.initialized = True
+        if not hasattr(self, '_initialized'):
+            self._initialized = True
             base_dir = os.path.dirname(os.path.realpath(__file__))
             file_path = os.path.join(base_dir, 'files/st.csv')
             with open(file_path) as f:
@@ -60,5 +60,4 @@ class Han:
 
 
 if __name__ == '__main__':
-    traditional_text = Han().to_traditional('萝卜去哪了，可以在茶几卜上几卦')
-    print(traditional_text)
+    print(Han().to_traditional('萝卜去哪了，可以在茶几卜上几卦'))
