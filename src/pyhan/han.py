@@ -2,8 +2,8 @@ import os
 
 
 class Han:
-    dataset = {}
-    dataset2 = {}
+    _dataset = {}
+    _dataset2 = {}
 
     def __init__(self):
         base_dir = os.path.dirname(os.path.realpath(__file__))
@@ -11,20 +11,20 @@ class Han:
         with open(file_path) as f:
             for i in f:
                 arr = i.strip().split(',', 1)
-                self.dataset[arr[0]] = arr[1].split(',')
+                self._dataset[arr[0]] = arr[1].split(',')
 
         file_path2 = os.path.join(base_dir, 'files/st2.csv')
         with open(file_path2) as f:
             for i in f:
                 arr = i.strip().split(',', 1)
-                if arr[0] not in self.dataset2:
-                    self.dataset2[arr[0]] = []
-                self.dataset2[arr[0]].append(arr[1].split(','))
+                if arr[0] not in self._dataset2:
+                    self._dataset2[arr[0]] = []
+                self._dataset2[arr[0]].append(arr[1].split(','))
 
-    def predict(self, idx, original):
+    def __predict(self, idx, original):
         character = original[idx]
-        if character in self.dataset2:
-            current = self.dataset2[character]
+        if character in self._dataset2:
+            current = self._dataset2[character]
             for i in current:
                 if len(i) > 1:
                     for ii in i[1:]:
@@ -34,20 +34,20 @@ class Han:
                 else:
                     return i[0]
 
-    def match(self, idx, original):
+    def __match(self, idx, original):
         character = original[idx]
-        if character not in self.dataset:
+        if character not in self._dataset:
             return character
         else:
-            arr = self.dataset[character]
+            arr = self._dataset[character]
             if len(arr) == 1:
                 return arr[0]
             else:
-                character_predict = self.predict(idx, original)
+                character_predict = self.__predict(idx, original)
                 return character_predict if character_predict else character
 
     def to_traditional(self, original):
-        return ''.join([self.match(i, original) for i in range(len(original))])
+        return ''.join([self.__match(i, original) for i in range(len(original))])
 
 
 if __name__ == '__main__':
