@@ -5,21 +5,30 @@ class Han:
     _dataset = {}
     _dataset2 = {}
 
-    def __init__(self):
-        base_dir = os.path.dirname(os.path.realpath(__file__))
-        file_path = os.path.join(base_dir, 'files/st.csv')
-        with open(file_path) as f:
-            for i in f:
-                arr = i.strip().split(',', 1)
-                self._dataset[arr[0]] = arr[1].split(',')
+    _instance = None
 
-        file_path2 = os.path.join(base_dir, 'files/st2.csv')
-        with open(file_path2) as f:
-            for i in f:
-                arr = i.strip().split(',', 1)
-                if arr[0] not in self._dataset2:
-                    self._dataset2[arr[0]] = []
-                self._dataset2[arr[0]].append(arr[1].split(','))
+    def __new__(cls, *args, **kwargs):
+        if cls._instance is None:
+            cls._instance = super(Han, cls).__new__(cls, *args, **kwargs)
+        return cls._instance
+
+    def __init__(self):
+        if not hasattr(self, 'initialized'):
+            self.initialized = True
+            base_dir = os.path.dirname(os.path.realpath(__file__))
+            file_path = os.path.join(base_dir, 'files/st.csv')
+            with open(file_path) as f:
+                for i in f:
+                    arr = i.strip().split(',', 1)
+                    self._dataset[arr[0]] = arr[1].split(',')
+
+            file_path2 = os.path.join(base_dir, 'files/st2.csv')
+            with open(file_path2) as f:
+                for i in f:
+                    arr = i.strip().split(',', 1)
+                    if arr[0] not in self._dataset2:
+                        self._dataset2[arr[0]] = []
+                    self._dataset2[arr[0]].append(arr[1].split(','))
 
     def __predict(self, idx, original):
         character = original[idx]
