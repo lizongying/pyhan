@@ -1,1 +1,1 @@
-include src/pyhan/files
+recursive-include src/pyhan/files *
