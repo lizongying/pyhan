@@ -1,6 +1,13 @@
 # 漢字
 
-漢字處理工具。當前支持簡化字轉漢字。
+漢字處理工具。
+
+簡化字轉漢字：
+
+* 支持《通用規範漢字表》中的全部簡化字
+* 對於一對多的簡化字，人工標註規則
+* 支持運行時增加自定義規則
+* 簡單快速
 
 附：[《通用規範漢字表》](./files/)
 
@@ -16,8 +23,15 @@ pip install pyhan
 from pyhan import to_traditional
 
 if __name__ == '__main__':
+    # 簡化字轉漢字
     res = to_traditional('萝卜去哪了，可以在茶几卜上几卦')
     # output: 蘿蔔去哪了，可以在茶几卜上幾卦
+    print(res)
+    
+    # 運行時增加自定義規則
+    add_rule('卜,蔔,-1|0|胡')
+    res = to_traditional('胡卜')
+    # output: 胡蔔
     print(res)
 ```
 

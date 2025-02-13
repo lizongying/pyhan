@@ -69,11 +69,23 @@ class Han:
                 character_predict = self.__predict(idx, original, length)
                 return character_predict if character_predict else character
 
+    # example:
+    #
+    # add_rule('卜,蔔,-1|0|胡')
+    # # output: 胡蔔
+    # print(to_traditional('胡卜'))
+    # 
+    def add_rule(self, rule):
+        arr = rule.strip().split(',', 1)
+        if arr[0] not in self._dataset2:
+            self._dataset2[arr[0]] = []
+        self._dataset2[arr[0]].insert(0, arr[1].split(','))
+
     def to_traditional(self, original):
         length = len(original)
         return ''.join([self.__match(i, original, length) for i in range(length)])
 
 
 if __name__ == '__main__':
-    # print(Han().to_traditional('萝卜去哪了，可以在茶几卜上几卦'))
-    print(Han().to_traditional('说干就干'))
+    Han().add_rule('卜,蔔,-1|0|胡')
+    print(Han().to_traditional('胡卜'))
