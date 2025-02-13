@@ -1,5 +1,3 @@
-name = 'pyhan'
-
 from .han import Han
 
 
