@@ -69,19 +69,33 @@ class Han:
                 character_predict = self.__predict(idx, original, length)
                 return character_predict if character_predict else character
 
-    # example:
-    #
-    # add_rule('卜,蔔,-1|0|胡')
-    # # output: 胡蔔
-    # print(to_traditional('胡卜'))
-    # 
     def add_rule(self, rule):
+        """
+        Add conversion rules to only support simplified Chinese characters
+        that correspond to multiple traditional Chinese characters
+
+        :param rule:
+        :return:
+
+        example:
+
+        add_rule('卜,蔔,-1|0|胡')
+        # output: 胡蔔
+        print(to_traditional('胡卜'))
+
+        """
         arr = rule.strip().split(',', 1)
         if arr[0] not in self._dataset2:
             self._dataset2[arr[0]] = []
         self._dataset2[arr[0]].insert(0, arr[1].split(','))
 
     def to_traditional(self, original):
+        """
+        Convert simplified Chinese characters to traditional Chinese characters
+
+        :param original: 
+        :return: 
+        """
         length = len(original)
         return ''.join([self.__match(i, original, length) for i in range(length)])
 

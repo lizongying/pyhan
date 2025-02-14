@@ -20,7 +20,7 @@ pip install pyhan
 ## 示例
 
 ```
-from pyhan import to_traditional
+from pyhan import to_traditional,add_rule
 
 if __name__ == '__main__':
     # 簡化字轉漢字
