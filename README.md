@@ -37,7 +37,7 @@ if __name__ == '__main__':
 
 ## 完善
 
-如果你需要增加规则，可以编辑 [st2.csv](./src/pyhan/files/st02.csv) 文件, 例如：
+如果你需要增加规则，可以编辑 [st02.csv](./src/pyhan/files/st02.csv) 文件, 例如：
 
 ```csv
 卜,蔔,-1|0|萝
