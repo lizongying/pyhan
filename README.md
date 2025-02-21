@@ -1,13 +1,13 @@
-# 漢字
-
-漢字處理工具。
-
-簡化字轉漢字：
+# 簡化字轉漢字
 
 * 支持《通用規範漢字表》中的全部簡化字
 * 對於一對多的簡化字，人工標註規則
 * 支持運行時增加自定義規則
 * 簡單快速
+
+[pypi](https://pypi.org/project/pyhan/)
+
+[pages](https://github.com/lizongying/hanzi)
 
 附：[《通用規範漢字表》](./files/)
 

@@ -102,4 +102,4 @@ class Han:
 
 if __name__ == '__main__':
     Han().add_rule('卜,蔔,-1|0|胡')
-    print(Han().to_traditional('胡卜'))
+    print(Han().to_traditional('下台'))
