@@ -41,3 +41,7 @@
 
 * `秋`，`鞦韆`現在使用較少，統一寫作`秋千`，不再對應漢字`鞦`
 * `囌`，`噜囌`現在使用較少，統一寫作`囉嗦`，不再對應漢字`囌`
+
+* `纔` 現在使用較少，統一寫作 `才`
+  [纔](https://dict.concised.moe.edu.tw/dictView.jsp?ID=37986#searchL)
+  [才](https://dict.concised.moe.edu.tw/search.jsp?md=1&word=%E6%89%8D#searchL)
